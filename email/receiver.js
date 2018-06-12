@@ -24,6 +24,7 @@ imap.once('ready', function() {
           msg.on('body', function(stream, info) {
             // console.log(prefix + 'Body');
             stream.pipe(fs.createWriteStream('msg-' + seqno + '-body.txt'));
+            var parse = require('./parse');
             // TODO : have to dump this in db
           });
         });
