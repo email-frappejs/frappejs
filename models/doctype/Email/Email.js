@@ -5,7 +5,7 @@ module.exports = {
     "isChild": 0,
     "keywordFields": [
         "name",
-        "emailAddress"
+        "from_emailAddress"
     ],
     "fields": [
         {
@@ -15,17 +15,17 @@ module.exports = {
             "required": 1
         },
         {
-            "fieldname": "emailAddress",
-            "label": "from",
+            "fieldname": "from_emailAddress",
+            "label": "Email",
             "fieldtype": "Data",
             "required": 1
         },
         {
             "fieldname": "password",
             "label": "Password",
-            "fieldtype": "Password",
+            "fieldtype": "Data",
             "required": 1,
-            "hidden": 1,
+            // "hidden": 1, uncomment when s: OAuth
         },
         {
             "fieldname": "host",
@@ -40,36 +40,22 @@ module.exports = {
             "required": 1
         },
         {
-            "fieldname": "emailAddress",
-            "label": "to",
+            "fieldname": "clientId",
+            "label": "Client Id",
             "fieldtype": "Data",
             "required": 1
         },
         {
-            "fieldname": "emailAddress",
-            "label": "cc",
+            "fieldname": "clientSecret",
+            "label": "Client Secret",
             "fieldtype": "Data",
-            "required": 0
+            "required": 1
         },
         {
-            "fieldname": "emailAddress",
-            "label": "bcc",
+            "fieldname": "refreshToken",
+            "label": "Refresh Token",
             "fieldtype": "Data",
-            "required": 0
-        },
-        {
-          "fieldname": "Subject",
-          "label": "Subject",
-          "fieldtype" : "Text",
-          "required": 0
-        },
-        { 
-          "fieldname": "Content",
-          "label": "",
-          "fieldtype" : "Text",
-          "required": 0
-        }         
-        
-     
+            "required": 1
+        }
+    
     ]
-}
