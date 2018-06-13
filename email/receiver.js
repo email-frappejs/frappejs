@@ -1,5 +1,5 @@
 var config = require('./config');
-
+const shell = require('shelljs');
 var Imap = require('imap'),
     inspect = require('util').inspect;
 
@@ -15,7 +15,7 @@ imap.once('ready', function() {
     openInbox(function(err, box) {
       if (err) throw err;
       // test for May 28, 2018
-      imap.search([ 'UNSEEN', ['SINCE', 'May 28, 2018'] ], function(err, results) {
+      imap.search([ 'UNSEEN', ['SINCE', 'June 13 2018'] ], function(err, results) {
         if (err) throw err;
         var fetch = imap.fetch(results, { bodies: '' });
         fetch.on('message', function(msg, seqno) {
@@ -24,6 +24,16 @@ imap.once('ready', function() {
           msg.on('body', function(stream, info) {
             // console.log(prefix + 'Body');
             stream.pipe(fs.createWriteStream('msg-' + seqno + '-body.txt'));
+            shell.env["MM"] = 'msg-' + seqno + '-body.txt';
+            const exec = require('child_process').exec;
+            var yourscript = exec('sh mailparser.sh',
+            (error, stdout, stderr) => {
+            console.log(`${stdout}`);
+            console.log(`${stderr}`);
+            if (error !== null) {
+                console.log(`exec error: ${error}`);
+            }
+        });
             // TODO : have to dump this in db
           });
         });
