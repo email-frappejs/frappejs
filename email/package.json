@@ -2,9 +2,11 @@
     "name": "GmailMailer",
     "version": "0.0.1",
     "dependencies": {
-        "xoauth2": "1.2.0",
+        "imap": "^0.8.19",
         "nodemailer": "4.6.5",
         "nodemailer-smtp-transport": "2.7.4",
-        "imap": "v0.8.x "
+        "shelljs": "^0.8.2",
+        "xoauth2": "1.2.0",
+        "shelljs": "0.8.2"
     }
 }
