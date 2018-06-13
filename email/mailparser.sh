@@ -3,5 +3,10 @@
 sudo easy_install pip
 pip install mail-parser
 
-mailparser -f main.txt -j > log.json
+echo $MM
 
+
+
+mailparser -f $MM -j > log.json
+
+rm $MM
